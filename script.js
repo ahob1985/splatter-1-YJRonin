@@ -1,15 +1,31 @@
-// Author:
+// Author:RoninYJ
 
 // Global UI Variables
-//let canvasDiv;
+let canvasDiv;
+let canvas;
+let buttonDiv;
+let sliderDiv;
+let slider;
+let minSpan;
+let maxSpan;
 
 function setup() {
-  // create canvas UI
+//create canvas UI
+canvasDiv = createDiv();
+canvas = createCanvas(640, 480);
+background(255, 20, 30);
+canvas.mousePressed(drawEllipse);
+canvas.parent(canvasDiv);
 
   // create slider UI
 
   // create button UI
-
+buttonDiv = createDiv();
+clearButton = createButton("Clear Canvas");
+clearButton.mousePressed(function() {
+  background(255, 255, 0);
+});
+clearButton.parent(buttonDiv);
 }
 
 function draw() {
@@ -17,7 +33,8 @@ function draw() {
 }
 
 function drawEllipse() {
-
+  fill("f00");
+  ellipse(mouseX, mouseY, 100);
 }
 
 

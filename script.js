@@ -35,6 +35,7 @@ function draw() {
 function drawEllipse() {
   fill("f00");
   ellipse(mouseX, mouseY, 100);
+  noStroke();
 }
 
 
@@ -55,5 +56,6 @@ function drawEllipse() {
 *******************************************************************************/
 
 function drawSplatter(){
-
+  fill(random(100, 256), random(100, 256), random(100, 256)) ;
+  noStroke();
 }

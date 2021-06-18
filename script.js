@@ -1,15 +1,37 @@
-// Author:
+// Author:RoninYJ
 
 // Global UI Variables
-//let canvasDiv;
+let canvasDiv;
+let canvas;
+let buttonDiv;
+let sliderDiv;
+let slider;
+let minSpan;
+let maxSpan;
 
 function setup() {
-  // create canvas UI
+//create canvas UI
+canvasDiv = createDiv();
+canvas = createCanvas(640, 480);
+background(255, 20, 30);
+canvas.mousePressed(drawSplatter);
+canvas.parent(canvasDiv);
 
   // create slider UI
-
+  sliderDiv = createDiv();
+  minSpan = createSpan("Min");
+  minSpan.parent(sliderDiv);
+  slider = createSlider(0, 100, 50, 1);
+  slider.parent(sliderDiv);
+  maxSpan = createSpan("Max");
+  maxSpan.parent(sliderDiv);
   // create button UI
-
+buttonDiv = createDiv();
+clearButton = createButton("Clear Canvas");
+clearButton.mousePressed(function() {
+  background(255, 255, 0);
+});
+clearButton.parent(buttonDiv);
 }
 
 function draw() {
@@ -17,7 +39,9 @@ function draw() {
 }
 
 function drawEllipse() {
-
+  fill("f00");
+  ellipse(mouseX, mouseY, 100);
+  noStroke();
 }
 
 
@@ -38,5 +62,14 @@ function drawEllipse() {
 *******************************************************************************/
 
 function drawSplatter(){
-
+  fill(random(100, 256), random(100, 256), random(100, 256)) ;
+  noStroke();
+  let ellipses = random(10, 15);
+  let spread = slider.value();
+  for(let i = 0; i < ellipses; i++) {
+    let randomSize = random(5,15);
+    let randomX = random(mouseX - spread, mouseX + spread +1);
+    let randomY = random(mouseY - spread, mouseY + spread +1);
+    ellipse(randomX, randomY, randomSize);
+  }
 }
